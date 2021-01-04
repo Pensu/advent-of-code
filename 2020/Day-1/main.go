@@ -9,9 +9,9 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello World")
-
 	f, err := os.Open("value.txt")
+	defer f.Close()
+
 	if err != nil {
 		log.Fatal(err)
 	}

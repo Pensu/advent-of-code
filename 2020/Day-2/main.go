@@ -12,6 +12,7 @@ import (
 func main() {
 	var resCount int
 	f, err := os.Open("values.txt")
+	defer f.Close()
 
 	if err != nil {
 		log.Fatal(err)
