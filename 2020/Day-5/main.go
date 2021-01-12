@@ -15,6 +15,12 @@ func main() {
 	}
 
 	var seatID int
+
+	seatMap := make([][]int, 128)
+	for i := range seatMap {
+		seatMap[i] = make([]int, 8)
+	}
+
 	s := bufio.NewScanner(f)
 	for s.Scan() {
 		line := s.Text()
@@ -42,11 +48,16 @@ func main() {
 				}
 			}
 		}
+
+		seatMap[rowMin][seatMin] = 1
 		if seatID < (rowMin*8 + seatMin) {
 			seatID = rowMin*8 + seatMin
 		}
 
 	}
 
+	for i := range seatMap {
+		fmt.Println(i, seatMap[i])
+	}
 	fmt.Println("The highest seatID", seatID)
 }
